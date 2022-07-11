@@ -43,8 +43,8 @@ const actualizarPrecio = () => {
 }
 
 function borrarProductos() {
-  const node = document.querySelector('.lista-productos')
-  node.remove()
+  const nodes = document.querySelectorAll('.item')
+  Array.from(nodes).forEach(node => node.remove())
   actualizarPrecio()
   // const itemContenido = `<div> Te quedaste sin productos pa </div>`
   // console.log("lo borraste pa")
