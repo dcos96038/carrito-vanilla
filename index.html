@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Carrito de compras</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <!-- Navbar -->
+
+    <!-- As a heading -->
+    <nav class="navbar bg-light">
+      <div class="container-fluid dropstart">
+        <span class="navbar-brand mb-0 h1">Mi tienda</span>
+
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="cart__icon"> 0 </span>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </button>
+          <ul class="dropdown-menu cart__input" aria-labelledby="dropdownMenuButton1">
+            <div class='lista-productos'>
+
+            </div>
+            <div class="p-2 text-white border-top mt-2 precio-total">Total: $0</div>
+            <button class="btn btn-danger" onclick=borrarProductos()><i class="fas fa-trash"></i></button>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+    <div class="container text-center">
+      <h1>Productos</h1>
+
+      <!-- Lista de productos -->
+
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-3 card__border">
+            <img src="https://i.blogs.es/86b11e/ps51/1366_2000.jpeg" class="card-img-top" alt="PS5">
+            <div class="card-body">
+              <h5 class="card-title">PlayStation 5</h5>
+              <p class="card-text">$ 100.000</p>
+              <button class="btn btn-primary btnComprar">Comprar</button>
+            </div>
+
+        </div>
+  
+        <div class="col-md-3 card__border">
+            <img src="https://megasports.vteximg.com.br/arquivos/ids/199257-1000-1000/06200035005_0.jpg?v=637625559692670000" class="card-img-top" alt="Pelota de futbol">
+            <div class="card-body">
+              <h5 class="card-title">Pelota de Futbol</h5>
+              <p class="card-text">$ 100</p>
+              <button class="btn btn-primary btnComprar">Comprar</button>
+            </div>
+        </div>
+  
+        <div class="col-md-3 card__border">
+            <img src="https://wilsonstore.com.ar/media/catalog/product/cache/97001a7609811bc0c28380f578d7c7df/t/e/team2.jpg" class="card-img-top" alt="Paleta de padel">
+            <div class="card-body">
+              <h5 class="card-title">Paleta de padel</h5>
+              <p class="card-text">$ 50.000</p>
+              <button class="btn btn-primary btnComprar">Comprar</button>
+            </div>
+        </div>
+  
+        <div class="col-md-3 card__border">
+            <img src="https://cdn.pocket-lint.com/r/s/1200x630/assets/images/140007-games-review-nintendo-switch-review-image1-lp6zy9awm0.jpg" class="card-img-top" alt="Switch">
+            <div class="card-body">
+              <h5 class="card-title">Nintendo Switch</h5>
+              <p class="card-text">$ 75.000</p>
+              <button class="btn btn-primary btnComprar">Comprar</button>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
