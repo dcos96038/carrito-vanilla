@@ -11,13 +11,16 @@ const agregarAlCarrito = (event) => {
   const listaProductos = document.querySelector('.lista-productos')
 
   const itemsEnCarrito = document.querySelectorAll('.item')
-  console.log(Array.from(itemsEnCarrito).map(item => console.log(item.textContent)));
-  // if () {
-  //   return
-  // }
-
-
-
+  const itemsArray = Array.from(itemsEnCarrito)
+  for (let i = 0; i < itemsArray.length; i++) {
+    const title = itemsArray[i].innerText;
+    if(title.search(titulo) !== -1){
+      const cantidad = itemsArray[i].querySelector('.cantidad')
+      cantidad.value++
+      actualizarPrecio()
+      return
+    }
+  }
 
   const item = document.createElement('div')
   const itemContenido = `<li class="px-2 d-flex justify-content-between align-items-start item">${titulo} <div class='precio'>$${precio}</div> <input type="number" class="form-control cantidad pe-0" value='1'></li>`
@@ -28,7 +31,6 @@ const agregarAlCarrito = (event) => {
   Array.from(elementoCantidad).forEach(item => item.addEventListener('change', actualizarPrecio))
 
   actualizarPrecio()
-
 }
 
 const actualizarPrecio = () => {
@@ -46,8 +48,6 @@ function borrarProductos() {
   const nodes = document.querySelectorAll('.item')
   Array.from(nodes).forEach(node => node.remove())
   actualizarPrecio()
-  // const itemContenido = `<div> Te quedaste sin productos pa </div>`
-  // console.log("lo borraste pa")
 }
 
 Array.from(comprarButtons).forEach(button => button.addEventListener('click', agregarAlCarrito))
