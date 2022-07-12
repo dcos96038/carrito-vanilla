@@ -1,15 +1,16 @@
-const comprarButtons = document.querySelectorAll('.btnComprar')
+const comprarButtons = document.querySelectorAll('.btn-comprar')
 
 const agregarAlCarrito = (event) => {
 
   event.preventDefault()
 
   const card = event.target.closest('.card__border');
-  const img = card.querySelector('.card-img-top').src
+  // const img = card.querySelector('.card-img-top').src
   const titulo = card.querySelector('.card-title').textContent
   const precio = Number(card.querySelector('.card-text').textContent.replace('$', '').replace('.',''))
-  const listaProductos = document.querySelector('.lista-productos')
 
+
+  const listaProductos = document.querySelector('.lista-productos')
   const itemsEnCarrito = document.querySelectorAll('.item')
   const itemsArray = Array.from(itemsEnCarrito)
   for (let i = 0; i < itemsArray.length; i++) {
@@ -17,6 +18,7 @@ const agregarAlCarrito = (event) => {
     if(title.search(titulo) !== -1){
       const cantidad = itemsArray[i].querySelector('.cantidad')
       cantidad.value++
+      actualizarCantidadTotal()
       actualizarPrecio()
       return
     }
@@ -28,8 +30,9 @@ const agregarAlCarrito = (event) => {
   listaProductos.append(item)
 
   const elementoCantidad = document.querySelectorAll('.cantidad')
-  Array.from(elementoCantidad).forEach(item => item.addEventListener('change', actualizarPrecio))
+  Array.from(elementoCantidad).forEach(item => item.addEventListener('change', actualizarCantidad))
 
+  actualizarCantidadTotal()
   actualizarPrecio()
 }
 
@@ -44,10 +47,33 @@ const actualizarPrecio = () => {
   elementoPrecioTotal.innerHTML = `Total: $ ${precioTotal}`
 }
 
-function borrarProductos() {
-  const nodes = document.querySelectorAll('.item')
-  Array.from(nodes).forEach(node => node.remove())
+const actualizarCantidad = (event) => {
+  if(event.target.value <= 0){
+    event.target.value = 1
+  }
+  actualizarCantidadTotal()
   actualizarPrecio()
 }
+
+const borrarProductos = () => {
+  const productos = document.querySelectorAll('.item')
+  Array.from(productos).forEach(producto => producto.remove())
+  actualizarPrecio()
+}
+
+const actualizarCantidadTotal = () => {
+
+  let total = 0
+
+  const badgeCantProductos = document.querySelector('.cart__icon')
+  const cantidades = document.querySelectorAll('.cantidad')
+  Array.from(cantidades).forEach(cantidad => {
+    total = total + Number(cantidad.value)
+  })
+  badgeCantProductos.textContent = total
+}
+
+const btnBorrar = document.querySelector('.btn-borrar-carrito')
+btnBorrar.addEventListener('click', borrarProductos)
 
 Array.from(comprarButtons).forEach(button => button.addEventListener('click', agregarAlCarrito))
