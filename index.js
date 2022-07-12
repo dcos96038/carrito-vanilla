@@ -58,6 +58,7 @@ const actualizarCantidad = (event) => {
 const borrarProductos = () => {
   const productos = document.querySelectorAll('.item')
   Array.from(productos).forEach(producto => producto.remove())
+  actualizarCantidadTotal()
   actualizarPrecio()
 }
 
